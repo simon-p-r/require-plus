@@ -1,0 +1,7 @@
+node_modules
+npm-debug.log
+.idea
+test.js
+example
+utils.js
+coverage.html

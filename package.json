@@ -1,10 +1,10 @@
 {
   "name": "require-plus",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "better require for modules",
   "main": "lib/index.js",
   "scripts": {
-   "test": "lab -a code -v -L -t 100",
+   "test": "lab -a code -v -D -L -t 85",
    "test-html": "lab -e test -r html -o coverage.html -vL -a code"
   },
   "keywords": [

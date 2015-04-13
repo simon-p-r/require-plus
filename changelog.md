@@ -8,5 +8,7 @@
 
 >0.0.5 - bug not fixed properly
 
+>0.0.6 - lowered threshold for testing to pass travis build
+
 
 

@@ -12,6 +12,8 @@ var it = lab.it;
 var expect = Code.expect;
 
 
+
+
 describe('initialise', function() {
 
   it('should throws an error constructed without new', function (done) {
@@ -41,7 +43,7 @@ describe('initialise', function() {
   it('should throw if directory does not exist', function (done) {
 
       var options = {
-        directory: 'directory/does/not/exist'
+        directory: './directory/does/not/exist'
       };
 
       var fn = function () {
@@ -49,7 +51,7 @@ describe('initialise', function() {
               var plus = new Require(options);
       };
 
-      expect(fn).to.throw('Directory does not exist');
+      expect(fn).to.throw('Directory does not exist or is a file');
       done();
 
   });
@@ -57,7 +59,7 @@ describe('initialise', function() {
   it('should throw if directory is a file', function (done) {
 
       var options = {
-        directory: './test/fixtures/aim.conf'
+        directory: Path.resolve(__dirname, './fixtures/aim.conf')
       };
 
       var fn = function () {
@@ -65,7 +67,7 @@ describe('initialise', function() {
               var plus = new Require(options);
       };
 
-      expect(fn).to.throw('Directory is a file');
+      expect(fn).to.throw('Directory does not exist or is a file');
       done();
 
   });
@@ -73,7 +75,7 @@ describe('initialise', function() {
   it('should filter out folders', function (done) {
 
       var options = {
-          directory: 'd:/modules/require-plus/test/fixtures'
+          directory: Path.resolve(__dirname, './fixtures')
       };
 
       var plus = new Require(options);
@@ -82,14 +84,14 @@ describe('initialise', function() {
 
   });
 
-  it('should log failed requires to console', function (done) {
+  it('should return true if directory exists', function (done) {
 
       var options = {
-          directory: 'd:/modules/require-plus/test/fixtures'
+          directory: Path.resolve(__dirname, './fixtures')
       };
 
       var plus = new Require(options);
-
+      expect(plus.exists(options.directory)).to.be.true();
       done();
 
   });
@@ -97,7 +99,7 @@ describe('initialise', function() {
   it('should filter out non js or json files', function (done) {
 
       var options = {
-          directory: 'd:/modules/require-plus/test/fixtures'
+        directory: Path.resolve(__dirname, './fixtures')
       };
 
       var plus = new Require(options);
@@ -109,7 +111,7 @@ describe('initialise', function() {
    it('should build a nested object', function (done) {
 
       var options = {
-        directory: 'd:/modules/aimCore'
+        directory: Path.resolve(__dirname, './fixtures')
       };
 
       var plus = new Require(options);

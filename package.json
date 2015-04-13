@@ -1,6 +1,6 @@
 {
   "name": "require-plus",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "better require for modules",
   "main": "lib/index.js",
   "scripts": {

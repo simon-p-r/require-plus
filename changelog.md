@@ -6,5 +6,7 @@
 
 >0.0.4 - fixed bug on Linux with paths not being separated for build tree method
 
+>0.0.5 - bug not fixed properly
+
 
 

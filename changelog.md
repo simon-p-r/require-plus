@@ -10,5 +10,7 @@
 
 >0.0.6 - lowered threshold for testing to pass travis build
 
+>0.0.7 - added badges for npm and dependency version, changed directory paramater in options object for constructor(takes array of paths rather than one path string)
+
 
 

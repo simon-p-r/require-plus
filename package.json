@@ -26,6 +26,7 @@
     "lab": "^5.8.0"
   },
   "dependencies": {
-    "hoek": "^2.13.0"
+    "hoek": "^2.13.0",
+    "path-is-absolute": "^1.0.0"
   }
 }

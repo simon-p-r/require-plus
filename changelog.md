@@ -14,5 +14,7 @@
 
 >0.0.8 - options directory can be a single string or an array of strings, better checking of directory existence after partial path is passed within options object to constructor which is resolved internally by module.  Raised code coverage to nearly 98%
 
+>0.0.9 - used path-is-absolute module to fill missing function in nodejs path library 
+
 
 

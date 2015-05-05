@@ -24,10 +24,10 @@ Node module for loading js files via require when supplied with a valid director
         extensions: ['.js','.json']
     };
     // if options are not set the standard defaults shown above will be applied, however you must include a directory string in options object which is passed to constructor
-    options.directory = ['./test', './some/path', './some/other/path'];
+    options.directory = ['./test', './some/path', './some/other/path'] // can be a string or an array;
     var results = new Plus(options);
     console.log(results);
-    //results will contain a moduleSet object (tree of required objects created by constructor), settings (options object passed to constructor) and root (root directory which object tree is built from)
+    //results will contain a moduleSet object (tree of required objects created by constructor) and settings (options object passed to constructor) 
 
 ##Todo
 

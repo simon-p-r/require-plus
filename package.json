@@ -1,11 +1,11 @@
 {
   "name": "require-plus",
-  "version": "0.0.7",
-  "description": "better require for modules",
+  "version": "0.0.8",
+  "description": "better require for directories",
   "main": "lib/index.js",
   "scripts": {
-   "test": "lab -a code -v -D -L -t 85",
-   "test-html": "lab -e test -r html -o coverage.html -vL -a code"
+    "test": "lab -a code -v -D -L -t 95",
+    "test-html": "lab -e test -r html -o coverage.html -vL -a code"
   },
   "keywords": [
     "module",
@@ -23,10 +23,9 @@
   "license": "BSD",
   "devDependencies": {
     "code": "^1.4.0",
-    "lab": "^5.5.1"
+    "lab": "^5.8.0"
   },
   "dependencies": {
-    "hoek": "^2.12.0",
-    "joi": "^6.1.0"
+    "hoek": "^2.13.0"
   }
 }

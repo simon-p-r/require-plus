@@ -12,5 +12,7 @@
 
 >0.0.7 - added badges for npm and dependency version, changed directory paramater in options object for constructor(takes array of paths rather than one path string)
 
+>0.0.8 - options directory can be a single string or an array of strings, better checking of directory existence after partial path is passed within options object to constructor which is resolved internally by module.  Raised code coverage to nearly 98%
+
 
 

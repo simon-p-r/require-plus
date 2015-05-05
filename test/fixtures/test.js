@@ -1,2 +1,1 @@
-module.exports = {test: 'hello'};
-
+module.exports = {example: 'hello'};

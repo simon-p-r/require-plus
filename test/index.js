@@ -56,7 +56,7 @@ describe('initialise', function () {
     it('should apply defaults to options object', function (done) {
 
         var plus = new Plus({
-          directory: '../test/fixtures'
+          directory: './test/fixtures'
         });
 
         expect(plus.settings.blacklist.length).to.equal(3);

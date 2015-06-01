@@ -5,6 +5,7 @@ var Lab = require('lab');
 var Plus = require('../lib/index.js');
 var Path = require('path');
 var Fs = require('fs');
+var Os = require('os');
 
 // Set-up lab
 var lab = exports.lab = Lab.script();
@@ -87,10 +88,16 @@ describe('initialise', function () {
     it('should split paths based on OS', function (done) {
 
         var plus = new Plus({
-              directory: ['test/fixtures']
+            directory: ['test/fixtures']
         });
 
-        expect(plus.split('test\\example\\final')).to.include(['example', 'final']);
+        if (Os.platform() === 'win32') {
+            expect(plus.split('test\\example\\final')).to.include(['example', 'final']);
+        } else {
+            expect(plus.split('test/example/final')).to.include(['example', 'final']);
+        }
+
+
         done();
 
     });

@@ -33,7 +33,7 @@ describe('initialise', function () {
 
         var fn = function () {
 
-            var plus = new Plus('Test');
+            var plus = new Plus();
         };
 
         expect(fn).throws(Error, 'RequirePlus must be constructed with an options object');
@@ -41,58 +41,13 @@ describe('initialise', function () {
 
     });
 
-    it('should throw an error when directory does not exists', function (done) {
-
-        var fn = function () {
-
-            var plus = new Plus({directory: 'Test'});
-        };
-
-        expect(fn).throws(Error);
-        done();
-
-    });
-
-    it('should apply defaults to options object', function (done) {
-
-        var plus = new Plus({
-          directory: './test/fixtures'
-        });
-
-        expect(plus.settings.blacklist.length).to.equal(3);
-        done();
-
-    });
-
-    it('should loop through array of directories', function (done) {
-
-        var plus = new Plus({
-          directory: [Path.resolve(__dirname, './fixtures')]
-        });
-
-        expect(plus.settings.directory.length).to.equal(1);
-        done();
-
-    });
-
-    it('should filter directories', function (done) {
-
-        var plus = new Plus({
-          directory: [Path.resolve(__dirname, './fixtures')]
-        });
-
-        expect(plus.moduleSet.node_modules).to.not.exist();
-        expect(plus.moduleSet['.idea']).to.not.exist();
-        done();
-
-    });
 
     it('should throw on invalid require', function (done) {
 
         var fn = function () {
 
             var plus = new Plus({
-                directory: [Path.resolve(__dirname, './invalid')]
+                directory: Path.resolve(__dirname, './invalid')
             });
         };
 
@@ -101,13 +56,55 @@ describe('initialise', function () {
 
     });
 
+
+    it('should throw on invalid directory', function (done) {
+
+        var fn = function () {
+
+            var plus = new Plus({
+                directory: ['example']
+            });
+        };
+
+        expect(fn).throws(Error);
+        done();
+
+    });
+
+
+    it('should create a tree of objects from an empty object, array of paths and a value', function (done) {
+
+        var plus = new Plus({
+              directory: ['test/fixtures']
+        });
+
+        expect(plus.createTree({}, [], {})).to.be.undefined();
+        expect(plus.createTree({test: 'example'}, ['test', 'example'], plus.moduleSet)).to.be.an.object();
+        done();
+
+    });
+
+    it('should split paths based on OS', function (done) {
+
+        var plus = new Plus({
+              directory: ['test/fixtures']
+        });
+
+        expect(plus.split('test\\example\\final')).to.include(['example', 'final']);
+        done();
+
+    });
+
     it('should build a moduleSet object', function (done) {
 
         var plus = new Plus({
-              directory: [Path.resolve(__dirname, './fixtures')]
+              directory: ['test/fixtures'],
+              blacklist: ['node', 'webstorm']
         });
 
-
+        expect(plus.moduleSet.node).to.not.exist();
+        expect(plus.moduleSet.webstorm).to.not.exist();
+        expect(plus.moduleSet.admin).to.be.an.array();
         expect(plus.moduleSet.test).to.be.an.object();
         done();
 

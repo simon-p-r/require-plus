@@ -1,11 +1,10 @@
 {
   "name": "require-plus",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "description": "better require for directories",
   "main": "lib/index.js",
   "scripts": {
-    "test": "lab -a code -v -D -L -t 95",
-    "test-html": "lab -e test -r html -o coverage.html -vL -a code"
+    "test": "lab -t 85 -v -a code -L"
   },
   "keywords": [
     "module",
@@ -20,10 +19,10 @@
     "url": "https://github.com/simon-p-r/require-plus/issues"
   },
   "author": "simon-p-r",
-  "license": "BSD",
+  "license": "BSD-3-Clause",
   "devDependencies": {
     "code": "^1.4.0",
-    "lab": "^5.8.0"
+    "lab": "^5.9.0"
   },
   "dependencies": {
     "hoek": "^2.13.0",

@@ -1,3 +1,5 @@
+>0.1.1 - fixed bug with root path not resolving correctly, still can't cover code by 100%
+
 >0.1.0 - removed some tests and improve testing based on os, added some tpye checking for buildTree method and created split path method
 
 >0.0.9 - used path-is-absolute module to fill missing function in nodejs path library, fixed issue with past resolving incorrectly

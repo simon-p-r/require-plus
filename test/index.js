@@ -76,7 +76,7 @@ describe('initialise', function () {
     it('should create a tree of objects from an empty object, array of paths and a value', function (done) {
 
         var plus = new Plus({
-              directory: ['test/fixtures']
+              directory: ['./fixtures']
         });
 
         expect(plus.createTree({}, [], {})).to.be.undefined();
@@ -85,30 +85,12 @@ describe('initialise', function () {
 
     });
 
-    it('should split paths based on OS', function (done) {
-
-        var plus = new Plus({
-            directory: ['test/fixtures']
-        });
-
-        if (Os.platform() === 'win32') {
-            expect(plus.split('test\\example\\final')).to.include(['example', 'final']);
-        } else {
-            expect(plus.split('test/example/final')).to.include(['example', 'final']);
-        }
-
-
-        done();
-
-    });
-
     it('should build a moduleSet object', function (done) {
 
         var plus = new Plus({
-              directory: ['test/fixtures'],
+              directory: ['./fixtures'],
               blacklist: ['node', 'webstorm']
         });
-
         expect(plus.moduleSet.node).to.not.exist();
         expect(plus.moduleSet.webstorm).to.not.exist();
         expect(plus.moduleSet.admin).to.be.an.array();

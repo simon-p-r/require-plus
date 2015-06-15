@@ -80,7 +80,7 @@ describe('initialise', function () {
         });
 
         expect(plus.createTree({}, [], {})).to.be.undefined();
-        expect(plus.createTree({test: 'example'}, ['test', 'example'], plus.moduleSet)).to.be.an.object();
+        expect(plus.createTree({ test: 'example' }, ['test', 'example'], plus.moduleSet)).to.be.an.object();
         done();
 
     });

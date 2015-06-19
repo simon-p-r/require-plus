@@ -1,5 +1,7 @@
 ##Changelog
 
+>1.2.0 - bumped version as previously published module prohibited publish to npm registery
+
 >1.0.0 - fixed resolving of path passed to constructor, reached 100% code coverage and have added error handling for failed module (error is thrown)
 
 >0.1.1 - fixed bug with root path not resolving correctly, still can't cover code by 100%

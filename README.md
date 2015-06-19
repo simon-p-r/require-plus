@@ -26,7 +26,7 @@ Node module for requiring a directory tree, it will throw if not a valid directo
     };
     var results = new Plus(options);
     console.log(results);
-    //results will contain a moduleSet object (tree of required objects created by constructor)
+    //results will contain a key called moduleSet which is an object (tree of required objects created by constructor)
 
 ##Todo
 

@@ -80,7 +80,7 @@ describe('initialise', function () {
         });
 
         expect(plus.createTree({}, [], {})).to.be.undefined();
-        expect(plus.createTree({ test: 'example' }, ['test', 'example'], plus.moduleSet)).to.be.an.object();
+        expect(plus.createTree({ test: 'example' }, ['test', 'example'], plus)).to.be.an.object();
         done();
 
     });
@@ -93,7 +93,10 @@ describe('initialise', function () {
         });
         expect(plus.moduleSet.node).to.not.exist();
         expect(plus.moduleSet.webstorm).to.not.exist();
-        expect(plus).to.be.an.object();
+        expect(plus.moduleSet).to.be.an.object();
+        expect(plus.moduleSet.routes).to.be.an.object();
+        expect(plus.moduleSet.routes.endpoints).to.be.an.object();
+        expect(plus.moduleSet.routes.endpoints.admin).to.be.an.array();
         done();
 
     });

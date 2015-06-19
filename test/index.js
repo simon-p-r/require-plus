@@ -93,8 +93,7 @@ describe('initialise', function () {
         });
         expect(plus.moduleSet.node).to.not.exist();
         expect(plus.moduleSet.webstorm).to.not.exist();
-        expect(plus.moduleSet.admin).to.be.an.array();
-        expect(plus.moduleSet.test).to.be.an.object();
+        expect(plus).to.be.an.object();
         done();
 
     });

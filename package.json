@@ -1,10 +1,10 @@
 {
   "name": "require-plus",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "better require for directories",
   "main": "lib/index.js",
   "scripts": {
-    "test": "lab -t 95 -v -a code -L"
+    "test": "lab -t 100 -v -a code -L"
   },
   "keywords": [
     "module",
@@ -25,9 +25,7 @@
     "lab": "^5.9.0"
   },
   "dependencies": {
-    "code": "^1.4.0",
     "hoek": "^2.13.0",
-    "lab": "^5.10.0",
     "path-is-absolute": "^1.0.0"
   }
 }

@@ -1,5 +1,7 @@
 ##Changelog
 
+>1.3.1 - fixed bug that was hiding error from try catch, required modules were not resolving due to missing dependencies
+
 >1.3.0 - fixed bug of not returning correct moduleSet value and fixed tests to catch bug
 
 >1.2.0 - bumped version as previously published module prohibited publish to npm registery

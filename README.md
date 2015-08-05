@@ -7,9 +7,7 @@
 
 
 
-
 Node module for requiring a directory tree, it will throw if not a valid directory and it will also throw if the object is not exported properly or cannot be required by require.
-
 
 
 ##Installation

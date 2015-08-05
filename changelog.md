@@ -1,5 +1,7 @@
 ##Changelog
 
+>1.4.0 - removed delete require.cache[__filename] as was losing reference to real base directory to resolve from, cleaned up linting and tidied up dependencies
+
 >1.3.1 - fixed bug that was hiding error from try catch, required modules were not resolving due to missing dependencies
 
 >1.3.0 - fixed bug of not returning correct moduleSet value and fixed tests to catch bug

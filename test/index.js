@@ -76,7 +76,7 @@ describe('initialise', function () {
     it('should create a tree of objects from an empty object, array of paths and a value', function (done) {
 
         var plus = new Plus({
-              directory: ['./fixtures']
+            directory: ['./fixtures']
         });
 
         expect(plus.createTree({}, [], {})).to.be.undefined();
@@ -88,8 +88,8 @@ describe('initialise', function () {
     it('should build a moduleSet object', function (done) {
 
         var plus = new Plus({
-              directory: ['./fixtures'],
-              blacklist: ['node', 'webstorm']
+            directory: ['./fixtures'],
+            blacklist: ['node', 'webstorm']
         });
         expect(plus.moduleSet.node).to.not.exist();
         expect(plus.moduleSet.webstorm).to.not.exist();

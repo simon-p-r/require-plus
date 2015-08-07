@@ -18,24 +18,39 @@ var expect = Code.expect;
 
 describe('initialise', function () {
 
+    it('should throw an error when constructed without new', function (done) {
+
+        var fn = function () {
+
+            var plus = Plus();
+        };
+
+        expect(fn).throws(Error, 'RequirePlus must be constructed using new');
+        done();
+
+    });
+
     it('should throw an error when constructed without options object', function (done) {
 
         var fn = function () {
 
-            var plus = Plus.require();
+            var plus = new Plus();
         };
 
-        expect(fn).throws(Error, 'require-plus must be passed a directory to require from');
+        expect(fn).throws(Error, 'RequirePlus must be constructed with an options object');
         done();
 
     });
 
 
-    it('should throw on invalid require', function (done) {
+
+    it('should throw on invalid directory', function (done) {
 
         var fn = function () {
 
-            var plus = Plus.require(Path.resolve(__dirname, './invalid'));
+            var plus = new Plus({
+                directory: 'this will fail'
+            });
         };
 
         expect(fn).throws(Error);
@@ -43,12 +58,13 @@ describe('initialise', function () {
 
     });
 
-
-    it('should throw on invalid directory', function (done) {
+    it('should throw on invalid require', function (done) {
 
         var fn = function () {
 
-            var plus = Plus.require('this will fail');
+            var plus = new Plus({
+                directory: Path.resolve(__dirname, './invalid')
+            });
         };
 
         expect(fn).throws(Error);
@@ -59,22 +75,26 @@ describe('initialise', function () {
 
     it('should create a tree of objects from an empty object, array of paths and a value', function (done) {
 
-        var results = Plus.require.createTree({}, [], {});
-        expect(results).to.be.undefined();
-        expect(Plus.require.createTree({ test: 'example' }, ['test', 'example'], {})).to.be.an.object();
+        var plus = new Plus({
+            directory: './fixtures'
+        });
+        expect(plus.createTree({}, [], {})).to.be.undefined();
+        expect(plus.createTree({ test: 'example' }, ['test', 'example'], {})).to.be.an.object();
         done();
 
     });
 
     it('should build a moduleSet object', function (done) {
 
-        var plus = Plus.require('./fixtures');
-        expect(plus.node).to.not.exist();
-        expect(plus.webstorm).to.not.exist();
-        expect(plus).to.be.an.object();
-        expect(plus.routes).to.be.an.object();
-        expect(plus.routes.endpoints).to.be.an.object();
-        expect(plus.routes.endpoints.admin).to.be.an.array();
+        var plus = new Plus({
+            directory: ['./fixtures']
+        });
+        expect(plus.moduleSet.node).to.not.exist();
+        expect(plus.moduleSet.webstorm).to.not.exist();
+        expect(plus.moduleSet).to.be.an.object();
+        expect(plus.moduleSet.routes).to.be.an.object();
+        expect(plus.moduleSet.routes.endpoints).to.be.an.object();
+        expect(plus.moduleSet.routes.endpoints.admin).to.be.an.array();
         done();
 
     });

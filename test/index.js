@@ -43,6 +43,21 @@ describe('initialise', function () {
     });
 
 
+
+    it('should throw on invalid directory', function (done) {
+
+        var fn = function () {
+
+            var plus = new Plus({
+                directory: 'this will fail'
+            });
+        };
+
+        expect(fn).throws(Error);
+        done();
+
+    });
+
     it('should throw on invalid require', function (done) {
 
         var fn = function () {
@@ -58,29 +73,13 @@ describe('initialise', function () {
     });
 
 
-    it('should throw on invalid directory', function (done) {
-
-        var fn = function () {
-
-            var plus = new Plus({
-                directory: ['example']
-            });
-        };
-
-        expect(fn).throws(Error);
-        done();
-
-    });
-
-
     it('should create a tree of objects from an empty object, array of paths and a value', function (done) {
 
         var plus = new Plus({
-            directory: ['./fixtures']
+            directory: './fixtures'
         });
-
         expect(plus.createTree({}, [], {})).to.be.undefined();
-        expect(plus.createTree({ test: 'example' }, ['test', 'example'], plus)).to.be.an.object();
+        expect(plus.createTree({ test: 'example' }, ['test', 'example'], {})).to.be.an.object();
         done();
 
     });
@@ -88,8 +87,7 @@ describe('initialise', function () {
     it('should build a moduleSet object', function (done) {
 
         var plus = new Plus({
-            directory: ['./fixtures'],
-            blacklist: ['node', 'webstorm']
+            directory: ['./fixtures']
         });
         expect(plus.moduleSet.node).to.not.exist();
         expect(plus.moduleSet.webstorm).to.not.exist();

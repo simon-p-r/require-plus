@@ -1,40 +1,28 @@
-// Load modules
+'use strict';
 
-var Code = require('code');
-var Lab = require('lab');
-var Plus = require('../lib/index.js');
-var Path = require('path');
-var Fs = require('fs');
-var Os = require('os');
+const Code = require('code');
+const Lab = require('lab');
+const Plus = require('../lib/index.js');
+const Path = require('path');
+
 
 // Set-up lab
-var lab = exports.lab = Lab.script();
-var describe = lab.describe;
-var it = lab.it;
-var expect = Code.expect;
+const lab = exports.lab = Lab.script();
+const describe = lab.describe;
+const it = lab.it;
+const expect = Code.expect;
 
 
 
 
 describe('initialise', function () {
 
-    it('should throw an error when constructed without new', function (done) {
-
-        var fn = function () {
-
-            var plus = Plus();
-        };
-
-        expect(fn).throws(Error, 'RequirePlus must be constructed using new');
-        done();
-
-    });
 
     it('should throw an error when constructed without options object', function (done) {
 
         var fn = function () {
 
-            var plus = new Plus();
+            new Plus();
         };
 
         expect(fn).throws(Error, 'RequirePlus must be constructed with an options object');
@@ -48,7 +36,7 @@ describe('initialise', function () {
 
         var fn = function () {
 
-            var plus = new Plus({
+            new Plus({
                 directory: 'this will fail'
             });
         };
@@ -62,7 +50,7 @@ describe('initialise', function () {
 
         var fn = function () {
 
-            var plus = new Plus({
+            new Plus({
                 directory: Path.resolve(__dirname, './invalid')
             });
         };
@@ -73,13 +61,26 @@ describe('initialise', function () {
     });
 
 
+    it('should merge optiosn with defaults', function (done) {
+
+        var plus = new Plus({
+            blacklist: ['pathA', 'routes'],
+            directory: './fixtures'
+        });
+        expect(plus._settings.blacklist).to.have.length(5);
+        expect(plus._settings.blacklist).to.contain(['pathA', 'node_modules']);
+        expect(plus.moduleSet.routes).to.not.exist();
+        done();
+
+    });
+
     it('should create a tree of objects from an empty object, array of paths and a value', function (done) {
 
         var plus = new Plus({
             directory: './fixtures'
         });
         expect(plus.createTree({}, [], {})).to.be.undefined();
-        expect(plus.createTree({ test: 'example' }, ['test', 'example'], {})).to.be.an.object();
+        expect(plus.createTree({ test: { nextKey: 'example' } }, ['test', 'example'], {})).to.be.an.object();
         done();
 
     });

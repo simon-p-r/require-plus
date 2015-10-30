@@ -1,5 +1,7 @@
 ##Changelog
 
+>1.5.0 - module changed to work with ES6 features and node 4 or greater, some dependencies removed and deepmerge package added. Test for constructor removed as strict mode won't allow this, also added test to show options being properly merged between user input and internal defaults.  Therefore blacklisting folders works properly.
+
 >1.4.1 - tidied up and tried to fix issue with path not resolving correctly
 
 >1.4.0 - removed delete require.cache[__filename] as was losing reference to real base directory to resolve from, cleaned up linting and tidied up dependencies

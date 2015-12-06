@@ -15,14 +15,14 @@ const expect = Code.expect;
 
 
 
-describe('initialise', function () {
+describe('initialise', () => {
 
 
-    it('should throw an error when constructed without options object', function (done) {
+    it('should throw an error when constructed without options object', (done) => {
 
-        var fn = function () {
+        const fn = function () {
 
-            new Plus();
+            Plus();
         };
 
         expect(fn).throws(Error, 'RequirePlus must be constructed with an options object');
@@ -31,12 +31,11 @@ describe('initialise', function () {
     });
 
 
+    it('should throw on invalid directory', (done) => {
 
-    it('should throw on invalid directory', function (done) {
+        const fn = function () {
 
-        var fn = function () {
-
-            new Plus({
+            Plus({
                 directory: 'this will fail'
             });
         };
@@ -46,56 +45,50 @@ describe('initialise', function () {
 
     });
 
-    it('should throw on invalid require', function (done) {
 
-        var fn = function () {
+    it('should throw on invalid require', (done) => {
 
-            new Plus({
+        const invalid = function () {
+
+            Plus({
                 directory: Path.resolve(__dirname, './invalid')
             });
         };
+        expect(invalid).throws(Error);
+        const isFile = function () {
 
-        expect(fn).throws(Error);
+            Plus({
+                directory: Path.resolve(__dirname, './fixtures/example.js')
+            });
+        };
+        expect(isFile).throws(Error);
         done();
 
     });
 
 
-    it('should merge optiosn with defaults', function (done) {
+    it('should merge options with defaults', (done) => {
 
-        var plus = new Plus({
+        const plus = Plus({
             blacklist: ['pathA', 'routes'],
             directory: './fixtures'
         });
-        expect(plus._settings.blacklist).to.have.length(5);
-        expect(plus._settings.blacklist).to.contain(['pathA', 'node_modules']);
-        expect(plus.moduleSet.routes).to.not.exist();
+        expect(plus.example.example).to.equal('hello');
         done();
 
     });
 
-    it('should create a tree of objects from an empty object, array of paths and a value', function (done) {
 
-        var plus = new Plus({
-            directory: './fixtures'
-        });
-        expect(plus.createTree({}, [], {})).to.be.undefined();
-        expect(plus.createTree({ test: { nextKey: 'example' } }, ['test', 'example'], {})).to.be.an.object();
-        done();
+    it('should build a moduleSet object', (done) => {
 
-    });
-
-    it('should build a moduleSet object', function (done) {
-
-        var plus = new Plus({
+        const plus = Plus({
             directory: ['./fixtures']
         });
-        expect(plus.moduleSet.node).to.not.exist();
-        expect(plus.moduleSet.webstorm).to.not.exist();
-        expect(plus.moduleSet).to.be.an.object();
-        expect(plus.moduleSet.routes).to.be.an.object();
-        expect(plus.moduleSet.routes.endpoints).to.be.an.object();
-        expect(plus.moduleSet.routes.endpoints.admin).to.be.an.array();
+        expect(plus.node).to.not.exist();
+        expect(plus.webstorm).to.not.exist();
+        expect(plus.routes).to.be.an.object();
+        expect(plus.routes.endpoints).to.be.an.object();
+        expect(plus.routes.endpoints.admin).to.be.an.array();
         done();
 
     });

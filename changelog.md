@@ -1,5 +1,7 @@
 ##Changelog
 
+>2.1.0 - updated deps and travis file 
+
 >2.0.0 - constructor is created by wrapper function which returns just the value of requiring directory, also added test to ensure input directory is not a file and updated devDependencies lab
 
 >1.5.0 - module changed to work with ES6 features and node 4 or greater, some dependencies removed and deepmerge package added. Test for constructor removed as strict mode won't allow this, also added test to show options being properly merged between user input and internal defaults.  Therefore blacklisting folders works properly.

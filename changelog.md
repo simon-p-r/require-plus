@@ -1,5 +1,7 @@
 ##Changelog
 
+>2.1.1 - bumped deps and addedd coveralls
+
 >2.1.0 - updated deps and travis file 
 
 >2.0.0 - constructor is created by wrapper function which returns just the value of requiring directory, also added test to ensure input directory is not a file and updated devDependencies lab

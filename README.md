@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/simon-p-r/require-plus.svg?branch=master)](https://travis-ci.org/simon-p-r/require-plus)
 [![Current Version](https://img.shields.io/npm/v/require-plus.svg)](https://www.npmjs.org/package/require-plus)
+[![Coverage Status](https://coveralls.io/repos/github/simon-p-r/require-plus/badge.svg?branch=master)](https://coveralls.io/github/simon-p-r/require-plus?branch=master)
 
 
 

@@ -1,6 +1,6 @@
 {
   "name": "require-plus",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "better require for directories",
   "main": "lib/index.js",
   "scripts": {
@@ -25,12 +25,12 @@
   "author": "simon-p-r",
   "license": "BSD-3-Clause",
   "devDependencies": {
-    "code": "^3.0.1",
-    "coveralls": "^2.11.11",
-    "lab": "^10.9.0"
+    "code": "^4.0.0",
+    "coveralls": "^2.11.14",
+    "lab": "^11.1.0"
   },
   "dependencies": {
-    "deepmerge": "^0.2.10",
-    "hoek": "^4.0.1"
+    "deepmerge": "^1.2.0",
+    "hoek": "^4.1.0"
   }
 }

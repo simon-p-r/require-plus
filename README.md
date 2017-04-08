@@ -1,5 +1,7 @@
 # require-plus
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/simon-p-r/require-plus.svg)](https://greenkeeper.io/)
+
 [![build status](https://travis-ci.org/simon-p-r/require-plus.svg?branch=master)](https://travis-ci.org/simon-p-r/require-plus)
 [![Current Version](https://img.shields.io/npm/v/require-plus.svg?maxAge=1000)](https://www.npmjs.org/package/require-plus)
 [![dependency Status](https://img.shields.io/david/simon-p-r/require-plus.svg?maxAge=1000)](https://david-dm.org/simon-p-r/require-plus)

@@ -5,7 +5,6 @@ const Lab = require('lab');
 const Plus = require('../lib/index.js');
 const Path = require('path');
 
-
 // Set-up lab
 const lab = exports.lab = Lab.script();
 const describe = lab.describe;
@@ -13,12 +12,10 @@ const it = lab.it;
 const expect = Code.expect;
 
 
-
-
 describe('initialise', () => {
 
 
-    it('should throw an error when constructed without options object', (done) => {
+    it('should throw an error when constructed without options object', () => {
 
         const fn = function () {
 
@@ -26,12 +23,10 @@ describe('initialise', () => {
         };
 
         expect(fn).throws(Error, 'RequirePlus must be constructed with an options object');
-        done();
-
     });
 
 
-    it('should throw on invalid directory', (done) => {
+    it('should throw on invalid directory', () => {
 
         const fn = function () {
 
@@ -41,12 +36,10 @@ describe('initialise', () => {
         };
 
         expect(fn).throws(Error);
-        done();
-
     });
 
 
-    it('should throw on invalid require', (done) => {
+    it('should throw on invalid require', () => {
 
         const invalid = function () {
 
@@ -62,24 +55,20 @@ describe('initialise', () => {
             });
         };
         expect(isFile).throws(Error);
-        done();
-
     });
 
 
-    it('should merge options with defaults', (done) => {
+    it('should merge options with defaults', () => {
 
         const plus = Plus({
             blacklist: ['pathA', 'routes'],
             directory: './fixtures'
         });
         expect(plus.example.example).to.equal('hello');
-        done();
-
     });
 
 
-    it('should build a moduleSet object', (done) => {
+    it('should build a moduleSet object', () => {
 
         const plus = Plus({
             directory: ['./fixtures']
@@ -89,9 +78,5 @@ describe('initialise', () => {
         expect(plus.routes).to.be.an.object();
         expect(plus.routes.endpoints).to.be.an.object();
         expect(plus.routes.endpoints.admin).to.be.an.array();
-        done();
-
     });
-
-
 });
